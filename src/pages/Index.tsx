@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Instagram, MessageCircle } from "lucide-react";
 import OrderBuilder from "@/components/OrderBuilder";
 import ColorSwatch from "@/components/ColorSwatch";
+import MediaGallery from "@/components/MediaGallery";
 
 // Import images
 import heroImage from "@/assets/hero-image.jpg";
@@ -10,6 +11,19 @@ import lookbook1 from "@/assets/lookbook-1.jpg";
 import lookbook2 from "@/assets/lookbook-2.jpg";
 import lookbook3 from "@/assets/lookbook-3.jpg";
 import lookbook4 from "@/assets/lookbook-4.jpg";
+
+// Media gallery items - mix of images and videos
+const mediaItems = [
+  { type: 'image' as const, src: lookbook1, alt: 'Vibrant tees in urban setting' },
+  { type: 'image' as const, src: lookbook2, alt: 'Colorful tees in nature' },
+  { type: 'image' as const, src: lookbook3, alt: 'Playful tee styling' },
+  { type: 'image' as const, src: lookbook4, alt: 'Casual tee moments' },
+  // Placeholder for future videos
+  { type: 'image' as const, src: lookbook1, alt: 'Blueprint tee collection' },
+  { type: 'image' as const, src: lookbook2, alt: 'Tee styling inspiration' },
+  { type: 'image' as const, src: lookbook3, alt: 'Colorful fashion moments' },
+  { type: 'image' as const, src: lookbook4, alt: 'Blueprint lifestyle' },
+];
 
 const colors = [
   { name: "Light Yellow", value: "#FFE135" },
@@ -54,18 +68,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      {/* Colorful Header */}
+      <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-primary/20 shadow-rainbow">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-primary">blueprint</div>
+            <div className="text-3xl font-black bg-gradient-rainbow bg-clip-text text-transparent">
+              blueprint
+            </div>
             <Button 
               onClick={openWhatsApp}
-              variant="outline" 
-              size="sm"
-              className="flex items-center gap-2"
+              className="btn-cyan flex items-center gap-2 px-6 py-3 rounded-2xl font-semibold"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-5 h-5" />
               Contact
             </Button>
           </div>
@@ -81,83 +95,91 @@ const Index = () => {
           <div className="absolute inset-0 bg-black/30" />
         </div>
         
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            The Perfect Plain Tee.
+        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight">
+            <span className="block bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent animate-pulse">
+              The Perfect
+            </span>
+            <span className="block mt-4 bg-gradient-rainbow bg-clip-text text-transparent">
+              Plain Tee.
+            </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Vibrant colors. Unbeatable comfort. For everyone.
+          <p className="text-2xl md:text-3xl mb-12 text-white/95 max-w-3xl mx-auto font-semibold">
+            <span className="text-accent">Vibrant colors.</span>{" "}
+            <span className="text-secondary">Unbeatable comfort.</span>{" "}
+            <span className="text-tertiary">For everyone.</span>
           </p>
           <Button 
             onClick={scrollToOrderBuilder}
-            className="btn-hero text-xl px-10 py-6"
+            className="btn-hero text-2xl px-12 py-8 font-black"
           >
-            Build Your Order
+            🚀 Build Your Order
           </Button>
         </div>
       </section>
 
-      {/* Lookbook Gallery */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
+      {/* Vibrant Media Gallery */}
+      <section className="py-20 px-4 bg-gradient-subtle">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Our Blueprint
+            <h2 className="text-5xl md:text-6xl font-black mb-6">
+              <span className="bg-gradient-rainbow bg-clip-text text-transparent">
+                Our Blueprint
+              </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              See how our perfect plain tees fit into every moment of your life
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-semibold">
+              See how our perfect plain tees create{" "}
+              <span className="text-primary">colorful moments</span>,{" "}
+              <span className="text-secondary">joyful experiences</span>, and{" "}
+              <span className="text-tertiary">vibrant memories</span> in every part of your life
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[lookbook1, lookbook2, lookbook3, lookbook4].map((image, index) => (
-              <div 
-                key={index}
-                className="group overflow-hidden rounded-2xl card-soft transform hover:scale-105 transition-all duration-300"
-              >
-                <img
-                  src={image}
-                  alt={`Lookbook ${index + 1}`}
-                  className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-            ))}
-          </div>
+          <MediaGallery items={mediaItems} />
         </div>
       </section>
 
       {/* Order Builder */}
       <OrderBuilder />
 
-      {/* Pricing and Colors */}
-      <section className="py-20 px-4 bg-muted/30">
+      {/* Colorful Pricing and Colors */}
+      <section className="py-20 px-4 bg-gradient-to-br from-secondary/10 via-primary/10 to-tertiary/10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-              Our Palette & Pricing
+            <h2 className="text-5xl md:text-6xl font-black mb-6">
+              <span className="bg-gradient-accent bg-clip-text text-transparent">
+                Our Palette &
+              </span>{" "}
+              <span className="text-quaternary">
+                Pricing
+              </span>
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Premium quality at accessible prices
+            <p className="text-xl text-muted-foreground font-semibold">
+              🌈 Premium quality at accessible prices 💫
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Pricing */}
-            <Card className="card-soft p-8">
-              <h3 className="text-2xl font-semibold mb-6">Pricing</h3>
+            {/* Colorful Pricing */}
+            <Card className="card-soft p-8 border-2 border-primary/20 shadow-cyan-glow">
+              <h3 className="text-3xl font-bold mb-8 bg-gradient-accent bg-clip-text text-transparent">
+                💰 Pricing
+              </h3>
               <div className="space-y-4">
                 {prices.map((item, index) => (
-                  <div key={index} className="flex justify-between items-center py-3 border-b border-border last:border-b-0">
-                    <span className="font-medium">{item.type}</span>
-                    <span className="text-lg font-bold text-primary">{item.price}</span>
+                  <div key={index} className="flex justify-between items-center py-4 border-b border-primary/10 last:border-b-0 hover:bg-gradient-subtle transition-colors duration-300 rounded-lg px-2">
+                    <span className="font-semibold text-foreground">{item.type}</span>
+                    <span className="text-xl font-black bg-gradient-rainbow bg-clip-text text-transparent">{item.price}</span>
                   </div>
                 ))}
               </div>
             </Card>
 
-            {/* Colors */}
-            <Card className="card-soft p-8">
-              <h3 className="text-2xl font-semibold mb-6">Available Colors</h3>
+            {/* Vibrant Colors */}
+            <Card className="card-soft p-8 border-2 border-secondary/20 shadow-purple-glow">
+              <h3 className="text-3xl font-bold mb-8 bg-gradient-rainbow bg-clip-text text-transparent">
+                🎨 Available Colors
+              </h3>
               <div className="grid grid-cols-5 gap-4">
                 {colors.map((color) => (
                   <div key={color.name} className="text-center">
@@ -178,29 +200,29 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-background py-12 px-4">
+      {/* Colorful Footer */}
+      <footer className="bg-gradient-to-br from-foreground via-foreground to-primary/20 text-background py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold mb-4 text-primary">blueprint</h3>
+          <div className="mb-12">
+            <h3 className="text-4xl font-black mb-6 bg-gradient-rainbow bg-clip-text text-transparent">
+              blueprint
+            </h3>
             <p className="text-background/80 mb-6">
               Quality plain tees for every moment of your life
             </p>
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-6">
               <Button 
                 onClick={openWhatsApp}
-                variant="secondary"
-                className="flex items-center gap-2"
+                className="btn-cyan flex items-center gap-3 px-8 py-4 text-lg font-semibold"
               >
-                <MessageCircle className="w-4 h-4" />
-                Contact Us on WhatsApp
+                <MessageCircle className="w-5 h-5" />
+                💬 Contact Us on WhatsApp
               </Button>
               <Button 
-                variant="outline"
-                className="flex items-center gap-2 border-background/20 text-background hover:bg-background hover:text-foreground"
+                className="btn-purple flex items-center gap-3 px-8 py-4 text-lg font-semibold"
               >
-                <Instagram className="w-4 h-4" />
-                Follow Us
+                <Instagram className="w-5 h-5" />
+                📱 Follow Us
               </Button>
             </div>
           </div>

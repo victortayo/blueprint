@@ -34,7 +34,18 @@ export default {
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					foreground: 'hsl(var(--secondary-foreground))',
+					glow: 'hsl(var(--secondary-glow))'
+				},
+				tertiary: {
+					DEFAULT: 'hsl(var(--tertiary))',
+					foreground: 'hsl(var(--tertiary-foreground))',
+					glow: 'hsl(var(--tertiary-glow))'
+				},
+				quaternary: {
+					DEFAULT: 'hsl(var(--quaternary))',
+					foreground: 'hsl(var(--quaternary-foreground))',
+					glow: 'hsl(var(--quaternary-glow))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -69,14 +80,19 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-rainbow': 'var(--gradient-rainbow)',
 				'gradient-card': 'var(--gradient-card)',
-				'gradient-subtle': 'var(--gradient-subtle)'
+				'gradient-subtle': 'var(--gradient-subtle)',
+				'gradient-accent': 'var(--gradient-accent)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',
 				'medium': 'var(--shadow-medium)',
 				'strong': 'var(--shadow-strong)',
-				'glow': 'var(--shadow-glow)'
+				'cyan-glow': 'var(--shadow-cyan-glow)',
+				'purple-glow': 'var(--shadow-purple-glow)',
+				'yellow-glow': 'var(--shadow-yellow-glow)',
+				'rainbow': 'var(--shadow-rainbow)'
 			},
 			transitionTimingFunction: {
 				'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',

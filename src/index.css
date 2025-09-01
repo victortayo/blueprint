@@ -4,28 +4,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Blueprint Design System - Playful, bright, and joyful e-commerce aesthetic */
+/* Blueprint Design System - Ultra playful, vibrant, and joyful like The Verge */
 
 @layer base {
   :root {
     /* Core Brand Colors */
-    --background: 0 0% 99%;
-    --foreground: 220 15% 15%;
+    --background: 0 0% 98%;
+    --foreground: 240 10% 10%;
     
-    /* Brand Identity */
-    --primary: 14 91% 60%; /* Vibrant coral */
+    /* Multi-color Brand Identity - Inspired by The Verge */
+    --primary: 195 100% 50%; /* Electric cyan */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 14 91% 70%;
+    --primary-glow: 195 100% 60%;
     
-    /* Supporting Colors */
-    --secondary: 220 15% 95%;
-    --secondary-foreground: 220 15% 25%;
+    /* Playful Secondary Colors */
+    --secondary: 280 100% 70%; /* Bright purple */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 280 100% 80%;
     
-    --accent: 14 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    /* Vibrant Accent Colors */
+    --accent: 45 100% 60%; /* Electric yellow */
+    --accent-foreground: 240 10% 10%;
+    --accent-glow: 45 100% 70%;
     
-    --muted: 220 10% 96%;
-    --muted-foreground: 220 10% 45%;
+    /* Additional Playful Colors */
+    --tertiary: 120 100% 50%; /* Electric green */
+    --tertiary-foreground: 0 0% 100%;
+    --tertiary-glow: 120 100% 60%;
+    
+    --quaternary: 15 100% 60%; /* Hot pink/coral */
+    --quaternary-foreground: 0 0% 100%;
+    --quaternary-glow: 15 100% 70%;
+    
+    --muted: 220 10% 95%;
+    --muted-foreground: 220 10% 40%;
     
     /* Functional Colors */
     --card: 0 0% 100%;
@@ -44,16 +56,21 @@
     /* Design System Tokens */
     --radius: 12px;
     
-    /* Custom Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(14 91% 60%) 0%, hsl(14 91% 70%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(220 10% 98%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 10% 99%) 100%);
+    /* Vibrant Multi-Color Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(195 100% 50%) 0%, hsl(280 100% 70%) 50%, hsl(45 100% 60%) 100%);
+    --gradient-rainbow: linear-gradient(90deg, hsl(195 100% 50%) 0%, hsl(280 100% 70%) 25%, hsl(45 100% 60%) 50%, hsl(120 100% 50%) 75%, hsl(15 100% 60%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(195 30% 98%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(195 20% 99%) 100%);
+    --gradient-accent: linear-gradient(45deg, hsl(280 100% 70%) 0%, hsl(195 100% 50%) 100%);
     
-    /* Shadows */
+    /* Colorful Shadows */
     --shadow-soft: 0 2px 20px -2px hsl(220 15% 15% / 0.08);
     --shadow-medium: 0 4px 30px -4px hsl(220 15% 15% / 0.12);
     --shadow-strong: 0 8px 40px -8px hsl(220 15% 15% / 0.16);
-    --shadow-glow: 0 0 30px hsl(14 91% 60% / 0.3);
+    --shadow-cyan-glow: 0 0 30px hsl(195 100% 50% / 0.4);
+    --shadow-purple-glow: 0 0 30px hsl(280 100% 70% / 0.4);
+    --shadow-yellow-glow: 0 0 30px hsl(45 100% 60% / 0.4);
+    --shadow-rainbow: 0 0 40px hsl(195 100% 50% / 0.2), 0 0 80px hsl(280 100% 70% / 0.1);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -127,16 +144,34 @@
 }
 
 @layer components {
-  /* Hero Button Variant */
+  /* Vibrant Hero Button with Rainbow Gradient */
   .btn-hero {
-    @apply bg-primary hover:bg-primary-glow text-primary-foreground px-8 py-4 rounded-xl font-semibold text-lg;
-    @apply shadow-lg hover:shadow-xl transform hover:-translate-y-1;
-    @apply transition-all duration-300 ease-in-out;
-    box-shadow: var(--shadow-medium);
+    background: var(--gradient-hero);
+    @apply text-white px-10 py-5 rounded-2xl font-bold text-xl;
+    @apply shadow-lg hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105;
+    @apply transition-all duration-500 ease-bounce;
+    box-shadow: var(--shadow-rainbow);
   }
   
   .btn-hero:hover {
-    box-shadow: var(--shadow-glow), var(--shadow-strong);
+    box-shadow: var(--shadow-rainbow), var(--shadow-strong);
+    animation: pulse-rainbow 0.6s ease-in-out;
+  }
+  
+  /* Colorful Button Variants */
+  .btn-cyan {
+    @apply bg-primary hover:bg-primary-glow text-primary-foreground;
+    box-shadow: var(--shadow-cyan-glow);
+  }
+  
+  .btn-purple {
+    @apply bg-secondary hover:bg-secondary-glow text-secondary-foreground;
+    box-shadow: var(--shadow-purple-glow);
+  }
+  
+  .btn-yellow {
+    @apply bg-accent hover:bg-accent-glow text-accent-foreground;
+    box-shadow: var(--shadow-yellow-glow);
   }
   
   /* Card Variants */
@@ -162,6 +197,27 @@
   .color-swatch.selected {
     @apply border-primary border-4;
     box-shadow: var(--shadow-glow), var(--shadow-soft);
+  }
+  
+  /* Gallery Media Items */
+  .gallery-item {
+    @apply rounded-3xl overflow-hidden shadow-medium;
+    @apply transform hover:scale-105 transition-all duration-500 ease-bounce;
+    background: var(--gradient-card);
+  }
+  
+  .gallery-item:hover {
+    box-shadow: var(--shadow-rainbow);
+  }
+  
+  .gallery-video {
+    @apply w-full h-full object-cover;
+  }
+  
+  /* Rainbow Animation */
+  @keyframes pulse-rainbow {
+    0%, 100% { background: var(--gradient-hero); }
+    50% { background: var(--gradient-rainbow); }
   }
   
   /* Smooth scrolling */
